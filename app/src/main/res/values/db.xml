@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Create statements -->
+    <string name="create_table_cidades">CREATE TABLE cidades (id INTEGER PRIMARY KEY, name TEXT)</string>
+
+    <!-- Drop statements -->
+    <string name="drop_table_cidades">DROP TABLE IF EXISTS cidades</string>
+    <string name="deleteall_table_cidades">DELETE FROM cidades</string>
+
+    <!-- Table name -->
+    <string name="table_cidades">cidades</string>
+
+    <!-- Table field name -->
+    <!-- Table Cidades -->
+    <string name="field_cidades_id">id</string>
+    <string name="field_cidades_name">name</string>
+
+</resources>

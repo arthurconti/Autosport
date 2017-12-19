@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.conti.autosport.InvoiceActivity"
-     android:padding="5dp">
+    tools:context="com.conti.autosport.activity.InvoiceActivity"
+    tools:layout_editor_absoluteY="89dp">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="76dp"
+        android:text="Superior"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:text="Frente"
+        app:layout_constraintStart_toStartOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="10dp"
+        android:text="Esquerda"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:text="Direita"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="76dp"
+        android:text="Traseira"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:text="Peças"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@android:color/holo_blue_light"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/txtTotal"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="5"
+            android:text="Valor Orçamento R$ 1000,00" />
+
+        <Button
+            android:id="@+id/btnResume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:id="@+id/imgUser"
-                android:layout_width="62dp"
-                android:layout_height="81dp"
-                android:tint="@android:color/background_dark"
-                app:srcCompat="@drawable/user" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editName"
-                    android:layout_width="223dp"
-                    android:layout_height="36dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Nome" />
-
-                <EditText
-                    android:id="@+id/editPhone"
-                    android:layout_width="221dp"
-                    android:layout_height="38dp"
-                    android:ems="10"
-                    android:inputType="phone" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-            <ImageView
-                android:id="@+id/imgCar"
-                android:layout_width="70dp"
-                android:layout_height="81dp"
-                android:tint="@android:color/background_dark"
-                app:srcCompat="@drawable/car" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/editPlate"
-                    android:layout_width="223dp"
-                    android:layout_height="36dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="Placa" />
-
-                <EditText
-                    android:id="@+id/editBrand"
-                    android:layout_width="223dp"
-                    android:layout_height="36dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="Marca" />
-
-                <EditText
-                    android:id="@+id/editModel"
-                    android:layout_width="223dp"
-                    android:layout_height="36dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="Modelo" />
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_weight="2"
+            android:text="Resumo" />
     </LinearLayout>
 
-</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

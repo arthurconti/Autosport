@@ -1,23 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.conti.autosport">
+    package="com.conti.autosport"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:largeHeap="true"
+        android:theme="@style/Theme.AppCompat">
+
+        <activity
+            android:name=".activity.MainMenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InvoiceActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
+        <activity
+            android:name=".activity.PreOrderFormActivity"
+            android:label="@string/title_dados_cliente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ServicoActivity"
+            android:label="@string/title_activity_servico"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CustomerListActivity"
+            android:label="@string/title_clientes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NovoClienteActivity"
+            android:label="@string/title_activity_new_cliente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SavePreOrderActivity"
+            android:label="@string/title_orcamento_concluido"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CityListActivity"
+            android:label="@string/title_cidades"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchEntryActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PreOrderEntryActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ResumoOrcamentoActivity"
+            android:label="@string/title_activity_resumo_orcamento"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ListaPecasActivity"
+            android:label="@string/title_activity_lista_pecas"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+
+        <activity
+            android:name=".activity.InvoiceActivity"
+            android:label="Tela de Orçamento"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="950822b8807e0b8c70460a16d6fb0cc8d7a38028" />
+
+
     </application>
 
 </manifest>

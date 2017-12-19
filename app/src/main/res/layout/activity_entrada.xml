@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="59dp"
+        android:text="@string/label_entrada"
+        android:id="@+id/txt_entrada"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/txtOrcamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_entrada"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:ems="11"
+        android:gravity="center"
+        android:hint="@string/label_entrada"
+        android:inputType="phone">
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/btnBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/txtOrcamento"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/buscar_selector" />
+
+</RelativeLayout>

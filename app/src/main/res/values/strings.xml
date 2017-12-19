@@ -1,3 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Autosport</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_servico">Servicos</string>
+    <string name="title_activity_cliente">ClienteActivity</string>
+    <string name="title_activity_new_cliente">Adicionar Cliente</string>
+    <string name="title_activity_orcamento">Finalizar Orcamento</string>
+    <string name="title_activity_cidade">CidadeActivity</string>
+    <string name="title_activity_entrada">EntradaActivity</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_activity_entrada_orcamento">EntradaOrcamento</string>
+    <string name="title_activity_resumo_orcamento">Resumo do Orçamento</string>
+    <string name="title_activity_lista_pecas">Lista de Peças</string>
+    <string name="title_servico">Adicionar Serviço</string>
+    <string name="title_dados_cliente">Dados do Cliente</string>
+    <string name="title_cidades">Selecione uma Cidade</string>
+    <string name="title_clientes">Selecione um Cliente</string>
+    <string name="title_orcamento_concluido">Orçamento Concluído</string>
+
+    <!-- Textos do sitema -->
+    <string name="folder_name">AutoSport</string>
+    <string name="select_option">Selecione uma opção abaixo:</string>
+    <string name="orcamento">Orçamento</string>
+    <string name="entrada">Entrada</string>
+    <string name="parte_superior">Parte Superior</string>
+    <string name="parte_frente">Parte Frente</string>
+    <string name="parte_direita">Parte Direita</string>
+    <string name="parte_esquerda">Parte Esquerda</string>
+    <string name="parte_traseira">Parte Traseira</string>
+    <string name="erro_vazio">Existe uma descrição ou valor vazio!</string>
+    <string name="erro_campos_vazios">Existem campos vazios! Por favor preencha e tente novamente</string>
+    <string name="erro_orcamento">Orçamento Vazio!</string>
+    <string name="hint_descricao">Descreva o serviço</string>
+    <string name="hint_preco">Valor (R$)</string>
+    <string name="btn_foto">Tirar Foto</string>
+    <string name="lista_servicos">Lista de Serviços:</string>
+    <string name="orcamento_detalhado">Orçamento Detalhado</string>
+    <string name="superior">Superior</string>
+    <string name="frente">Frente</string>
+    <string name="esquerda">Lateral Esquerda</string>
+    <string name="direita">Lateral Direita</string>
+    <string name="traseira">Traseira</string>
+    <string name="pecas">Peças</string>
+    <string name="cliente">Cliente:</string>
+    <string name="nenhum_cliente">Nenhum cliente selecionado</string>
+    <string name="placa">Placa:</string>
+    <string name="marca">Marca:</string>
+    <string name="modelo">Modelo:</string>
+    <string name="sem_clientes">Não existem clientes cadastrados!</string>
+    <string name="erro_clientes">Erro ao obter clientes!</string>
+    <string name="sem_cidades">Não existem cidades cadastradas!</string>
+    <string name="erro_cidades">Erro ao obter cidades!</string>
+    <string name="gravando_orcamento">Gravando Orçamento...</string>
+    <string name="gravanda_entrada">Gravando entrada do Orçamento...</string>
+    <string name="carregando_clientes">Carregando clientes...</string>
+    <string name="sucesso_orcamento">Orçamento #%s concluído com sucesso!</string>
+    <string name="sucesso_entrada">Orçamento #%s deu entrada com sucesso!</string>
+    <string name="cliente_sucesso">Cliente Inserido com Sucesso!</string>
+    <string name="cliente_erro">Não foi possível inserir o cliente!</string>
+    <string name="hint_search_name">Digite o name para pesquisar</string>
+    <string name="tire_fotos">Tire as fotos para dar entrada no orçamento #</string>
+    <string name="painel">Painel</string>
+    <string name="erro_entrada">Problemas ao entrar orçamento!</string>
+    <string name="descricao_peca">Descreva a peça</string>
+    <string name="aguarde">Aguarde</string>
+    <string name="processando">Procurando cidades</string>
+    <string name="label_entrada">Nº do Orcamento</string>
+    <string name="existe_entrada">Já existe uma entrada pra esse orçamento ou orçamento não existe!</string>
+    <string name="title_activity_settings">Configurações</string>
+
+    <string name="hello_world">Hello world!</string>
+
 </resources>

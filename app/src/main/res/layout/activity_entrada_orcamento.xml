@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtentrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="buttonClick"
+        android:text="@string/tire_fotos"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnFotoSuperior"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:onClick="buttonClick"
+        android:text="@string/superior" />
+
+    <Button
+        android:id="@+id/btnFotoFrente"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonClick"
+        android:text="@string/frente" />
+
+    <Button
+        android:id="@+id/btnFotoDireita"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonClick"
+        android:text="@string/direita" />
+
+    <Button
+        android:id="@+id/btnFotoTraseira"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonClick"
+        android:text="@string/traseira" />
+
+    <Button
+        android:id="@+id/btnFotoEsquerda"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonClick"
+        android:text="@string/esquerda" />
+
+    <Button
+        android:id="@+id/btnFotoPainel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="buttonClick"
+        android:text="@string/painel" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/btnLimpar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:onClick="buttonClick"
+            android:src="@drawable/limpartudo_selector" />
+
+        <ImageButton
+            android:id="@+id/btnProcessar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:onClick="buttonClick"
+            android:src="@drawable/avancar_selector" />
+    </LinearLayout>
+
+</LinearLayout>
