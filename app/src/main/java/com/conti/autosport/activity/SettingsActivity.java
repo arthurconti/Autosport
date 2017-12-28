@@ -35,7 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         editIP = findViewById(R.id.txtIP);
 
-        editIP.setText(prefs.getString("IP", ""));
+        editIP.setText(prefs.getString("IP", "192.168.1.111"));
         InputFilter[] filters = new InputFilter[1];
         filters[0] = new InputFilter() {
             @Override

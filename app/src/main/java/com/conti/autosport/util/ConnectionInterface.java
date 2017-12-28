@@ -43,7 +43,7 @@ public class ConnectionInterface {
 
     public ConnectionInterface(Context ctx) {
         this.ctx = ctx;
-        ip = PreferenceManager.getDefaultSharedPreferences(ctx).getString("IP", "");
+        ip = PreferenceManager.getDefaultSharedPreferences(ctx).getString("IP", "192.168.1.111");
     }
 
     public ConnectionInterface(Context ctx, String txt) {
