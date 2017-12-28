@@ -62,7 +62,7 @@ public class Database {
     }
 
     public List<City> getAllCidades() {
-        LinkedList<City> ret = new LinkedList<City>();
+        LinkedList<City> ret = new LinkedList<>();
         Log.d("Autosport", "getallCidades");
 
         Cursor cursor = database.query(TABLE, ALL_COLUMNS, null, null, null,

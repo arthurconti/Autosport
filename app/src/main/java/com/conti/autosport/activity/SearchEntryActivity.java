@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +20,7 @@ public class SearchEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_entrada);
 
         final ConnectionInterface conn = new ConnectionInterface(this);
-        final EditText txtOrcamento = (EditText) findViewById(R.id.txtOrcamento);
+        final EditText txtOrcamento = findViewById(R.id.txtOrcamento);
 
         findViewById(R.id.btnBuscar).setOnClickListener(new OnClickListener() {
 

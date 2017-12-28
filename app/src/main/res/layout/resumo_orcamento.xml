@@ -42,7 +42,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtSuperior"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -57,7 +56,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,7 +67,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtFrente"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -83,7 +81,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -94,7 +92,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtLatDireita"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -109,7 +106,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,7 +117,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtTraseira"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -135,7 +131,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -146,7 +142,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtLatEsquerda"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -161,7 +156,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -172,7 +167,6 @@
                     android:visibility="gone">
 
                     <TextView
-                        android:id="@+id/txtPecas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -187,7 +181,7 @@
                         android:orientation="vertical"
                         android:paddingLeft="40dp"
                         android:paddingRight="20dp"
-                        android:paddingTop="20dp"></LinearLayout>
+                        android:paddingTop="20dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
@@ -223,7 +217,8 @@
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/avancar_selector" />
+                android:src="@drawable/avancar_selector"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
     </LinearLayout>
 

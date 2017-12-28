@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.conti.autosport.R;
-import com.conti.autosport.model.PreOrder;
-import com.conti.autosport.model.Peca;
-import com.conti.autosport.model.Servico;
 import com.conti.autosport.manager.OrcamentoManager;
+import com.conti.autosport.model.Peca;
+import com.conti.autosport.model.PreOrder;
+import com.conti.autosport.model.Servico;
 
 import java.util.ArrayList;
 
@@ -32,17 +31,19 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
 
         orcamento = OrcamentoManager.getInstance().getOrcamento();
 
-        if (orcamento.getSuperior() != null || orcamento.getFrente() != null
-                || orcamento.getLatDireita() != null
-                || orcamento.getTraseira() != null
-                || orcamento.getLatEsquerda() != null || orcamento.getListaPecas() != null) {
+        if (orcamento.isEmpty()) {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.erro_orcamento), Toast.LENGTH_LONG)
+                    .show();
+            finish();
+        } else {
 
             if (orcamento.getSuperior() != null) {
-                LinearLayout superiorGeral = (LinearLayout) findViewById(R.id.SuperiorGeral);
+                LinearLayout superiorGeral = findViewById(R.id.SuperiorGeral);
                 superiorGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout superiorContainer = (LinearLayout) findViewById(R.id.superiorContainer);
+                LinearLayout superiorContainer = findViewById(R.id.superiorContainer);
                 ArrayList<Servico> servicos = orcamento.getSuperior()
                         .getServices();
                 for (int i = 0; i < servicos.size(); i++) {
@@ -68,11 +69,11 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             if (orcamento.getFrente() != null) {
-                LinearLayout frenteGeral = (LinearLayout) findViewById(R.id.frenteGeral);
+                LinearLayout frenteGeral = findViewById(R.id.frenteGeral);
                 frenteGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout frenteContainer = (LinearLayout) findViewById(R.id.frenteContainer);
+                LinearLayout frenteContainer = findViewById(R.id.frenteContainer);
                 ArrayList<Servico> servicos = orcamento.getFrente()
                         .getServices();
                 for (int i = 0; i < servicos.size(); i++) {
@@ -98,11 +99,11 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             if (orcamento.getLatDireita() != null) {
-                LinearLayout latDireitaGeral = (LinearLayout) findViewById(R.id.latDireitaGeral);
+                LinearLayout latDireitaGeral = findViewById(R.id.latDireitaGeral);
                 latDireitaGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout latDireitaContainer = (LinearLayout) findViewById(R.id.latDireitaContainer);
+                LinearLayout latDireitaContainer = findViewById(R.id.latDireitaContainer);
                 ArrayList<Servico> servicos = orcamento.getLatDireita()
                         .getServices();
                 for (int i = 0; i < servicos.size(); i++) {
@@ -128,11 +129,11 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             if (orcamento.getTraseira() != null) {
-                LinearLayout traseiraGeral = (LinearLayout) findViewById(R.id.traseiraGeral);
+                LinearLayout traseiraGeral = findViewById(R.id.traseiraGeral);
                 traseiraGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout traseiraContainer = (LinearLayout) findViewById(R.id.traseiraContainer);
+                LinearLayout traseiraContainer = findViewById(R.id.traseiraContainer);
                 ArrayList<Servico> servicos = orcamento.getTraseira()
                         .getServices();
                 for (int i = 0; i < servicos.size(); i++) {
@@ -158,11 +159,11 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             if (orcamento.getLatEsquerda() != null) {
-                LinearLayout latEsquerdaGeral = (LinearLayout) findViewById(R.id.latEsquerdaGeral);
+                LinearLayout latEsquerdaGeral = findViewById(R.id.latEsquerdaGeral);
                 latEsquerdaGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout latEsquerdaContainer = (LinearLayout) findViewById(R.id.latEsquerdaContainer);
+                LinearLayout latEsquerdaContainer = findViewById(R.id.latEsquerdaContainer);
                 ArrayList<Servico> servicos = orcamento.getLatEsquerda()
                         .getServices();
                 for (int i = 0; i < servicos.size(); i++) {
@@ -188,11 +189,11 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             if (orcamento.getListaPecas() != null) {
-                LinearLayout pecasGeral = (LinearLayout) findViewById(R.id.PecasGeral);
+                LinearLayout pecasGeral = findViewById(R.id.PecasGeral);
                 pecasGeral.setVisibility(View.VISIBLE);
                 subtotal = 0;
 
-                LinearLayout pecasContainer = (LinearLayout) findViewById(R.id.pecasContainer);
+                LinearLayout pecasContainer = findViewById(R.id.pecasContainer);
                 ArrayList<Peca> pecas = orcamento.getListaPecas();
                 for (int i = 0; i < pecas.size(); i++) {
                     addServico(pecasContainer, pecas.get(i).getNome(), "R$"
@@ -212,14 +213,8 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
                 pecasContainer.addView(txtSubtotal);
             }
 
-            TextView txtTotal = (TextView) findViewById(R.id.txtTotal);
+            TextView txtTotal = findViewById(R.id.txtTotal);
             txtTotal.setText("Total: R$" + String.format("%.2f", total));
-
-        } else {
-            Toast.makeText(getApplicationContext(),
-                    getString(R.string.erro_orcamento), Toast.LENGTH_LONG)
-                    .show();
-            finish();
         }
     }
 
@@ -240,9 +235,9 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
                            String valor) {
         LinearLayout line = (LinearLayout) View.inflate(this,
                 R.layout.template_servico, null);
-        TextView txtservico = (TextView) line.findViewById(R.id.txtDescricao);
+        TextView txtservico = line.findViewById(R.id.txtDescricao);
         txtservico.setText(descricao);
-        TextView txtvalor = (TextView) line.findViewById(R.id.txtValor);
+        TextView txtvalor = line.findViewById(R.id.txtValor);
         txtvalor.setText(valor);
 
         container.addView(line);

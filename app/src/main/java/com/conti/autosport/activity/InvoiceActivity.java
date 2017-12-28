@@ -2,9 +2,9 @@ package com.conti.autosport.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -63,22 +63,26 @@ public class InvoiceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Deseja encerrar esse orçamento?");
-        builder.setMessage("Ao sair sem salvar, esse orçamento será perdido.");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.show();
+        if (OrcamentoManager.getInstance().getOrcamento().isEmpty()) {
+            finish();
+        } else {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Deseja encerrar esse orçamento?");
+            builder.setMessage("Ao sair sem salvar, esse orçamento será perdido.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.show();
+        }
     }
 
     @OnClick(R.id.button6)

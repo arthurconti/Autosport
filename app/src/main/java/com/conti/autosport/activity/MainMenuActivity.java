@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -11,14 +10,11 @@ import android.view.View;
 
 import com.conti.autosport.R;
 import com.conti.autosport.manager.OrcamentoManager;
-import com.conti.autosport.util.Parte;
-
 import com.crashlytics.android.Crashlytics;
 
-import io.fabric.sdk.android.Fabric;
-
-
 import java.io.File;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -84,11 +80,11 @@ public class MainMenuActivity extends AppCompatActivity {
             if (files == null) {
                 return true;
             }
-            for (int i = 0; i < files.length; i++) {
-                if (files[i].isDirectory()) {
-                    deleteDirectory(files[i]);
+            for (File file : files) {
+                if (file.isDirectory()) {
+                    deleteDirectory(file);
                 } else {
-                    files[i].delete();
+                    file.delete();
                 }
             }
         }

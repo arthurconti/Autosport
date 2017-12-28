@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +18,7 @@ import com.conti.autosport.util.Mask;
 public class NovoClienteActivity extends AppCompatActivity {
 
     EditText txtNome;
-    EditText txtEmail;
-    EditText txtTel;
     EditText txtCel;
-    EditText txtEndereco;
     Customer client;
     City cidade = null;
 
@@ -33,13 +29,9 @@ public class NovoClienteActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        txtNome = (EditText) findViewById(R.id.txtNome);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
-        txtTel = (EditText) findViewById(R.id.txtTel);
-        txtTel.addTextChangedListener(Mask.insert("(##)####-####", txtTel));
-        txtCel = (EditText) findViewById(R.id.txtCel);
+        txtNome = findViewById(R.id.txtNome);
+        txtCel = findViewById(R.id.txtCel);
         txtCel.addTextChangedListener(Mask.insert("(##)#####-####", txtCel));
-        txtEndereco = (EditText) findViewById(R.id.txtEndereco);
     }
 
     public void buttonClick(View v) {
@@ -63,29 +55,21 @@ public class NovoClienteActivity extends AppCompatActivity {
 
     private void limparCampos() {
         txtNome.setText("");
-        txtEmail.setText("");
-        txtTel.setText("");
         txtCel.setText("");
-        txtEndereco.setText("");
         cidade = null;
 
-        TextView txt = (TextView) findViewById(R.id.txtNomeCidade);
+        TextView txt = findViewById(R.id.txtNomeCidade);
         txt.setText("");
     }
 
     private void salvar() {
         if (txtNome.getText().toString() != ""
-                && txtEmail.getText().toString() != ""
                 && txtCel.getText().toString() != ""
-                && txtTel.getText().toString() != ""
-                && txtEndereco.getText().toString() != "" && cidade != null) {
+                && cidade != null) {
             client = new Customer();
 
             client.setName(txtNome.getText().toString());
-            client.setEmail(txtEmail.getText().toString());
             client.setMobile(txtCel.getText().toString());
-            client.setPhone(txtTel.getText().toString());
-            client.setAddress(txtEndereco.getText().toString());
             client.setCity(cidade.getID());
 
             ConnectionInterface conn = new ConnectionInterface(this);
@@ -123,7 +107,7 @@ public class NovoClienteActivity extends AppCompatActivity {
                 cidade.setID(data.getExtras().getInt("ID"));
                 cidade.setNome(data.getExtras().getString("Nome"));
 
-                TextView txt = (TextView) findViewById(R.id.txtNomeCidade);
+                TextView txt = findViewById(R.id.txtNomeCidade);
                 txt.setText(cidade.getNome());
             }
         }

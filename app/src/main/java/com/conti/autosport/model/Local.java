@@ -2,7 +2,6 @@ package com.conti.autosport.model;
 
 import android.graphics.Bitmap;
 
-import com.conti.autosport.util.CustomTouchImageView;
 import com.conti.autosport.util.Point;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class Local {
 
-    private List<Point> points = new ArrayList<Point>();
+    private List<Point> points = new ArrayList<>();
 
     private Bitmap map;
     private ArrayList<Servico> services;

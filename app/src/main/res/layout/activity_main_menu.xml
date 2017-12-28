@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="Overdraw">
 
     <TextView
-        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,7 +28,8 @@
             android:background="@android:color/transparent"
             android:onClick="buttonClick"
             android:src="@drawable/orcamento_selector"
-            android:text="@string/orcamento" />
+            android:text="@string/orcamento"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/btnEntrada"
@@ -37,7 +39,8 @@
             android:background="@android:color/transparent"
             android:onClick="buttonClick"
             android:src="@drawable/entrada_selector"
-            android:text="@string/entrada" />
+            android:text="@string/entrada"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </LinearLayout>

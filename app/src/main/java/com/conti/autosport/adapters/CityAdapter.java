@@ -16,37 +16,39 @@ import java.util.List;
 
 public class CityAdapter extends ArrayAdapter<City> {
 
-    private ArrayList<City> listaCidades;
-    private ArrayList<City> filteredCidades;
+    private ArrayList<City> cityList;
+    private ArrayList<City> filteredCities;
     private Context context;
 
-    public ArrayList<City> getFilteredClients() {
-        return filteredCidades;
+    public ArrayList<City> getFilteredCities() {
+        return filteredCities;
     }
-
-    public void setFilteredClients(ArrayList<City> filteredCidades) {
-        this.filteredCidades = filteredCidades;
-    }
-
-    Filtro filter;
 
     public CityAdapter(Context context, ArrayList<City> cidades) {
         super(context, R.layout.cliente_row, cidades);
-        // TODO Auto-generated constructor stub
-        listaCidades = cidades;
-        filteredCidades = cidades;
+        cityList = cidades;
+        setCustomList(cidades);
+        filteredCities = cidades;
         this.context = context;
+    }
+
+    private void setCustomList(ArrayList<City> cities) {
+        for (City city : cities
+                ) {
+            if (city.getNome().trim().equalsIgnoreCase("itapetininga")) {
+                cityList.remove(cities.indexOf(city));
+                cityList.add(0, city);
+            }
+        }
     }
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
-        return filteredCidades.size();
+        return filteredCities.size();
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
 
         final ViewHolder vh;
         if (convertView == null) {
@@ -55,14 +57,14 @@ public class CityAdapter extends ArrayAdapter<City> {
             convertView = inf.inflate(R.layout.cliente_row, null, false);
 
             vh = new ViewHolder();
-            vh.nameTxt = (TextView) convertView.findViewById(R.id.nametxt);
-            vh.nameTxt.setText(filteredCidades.get(position).getNome());
+            vh.nameTxt = convertView.findViewById(R.id.nametxt);
+            vh.nameTxt.setText(filteredCities.get(position).getNome());
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
 
-            vh.nameTxt = (TextView) convertView.findViewById(R.id.nametxt);
-            vh.nameTxt.setText(filteredCidades.get(position).getNome());
+            vh.nameTxt = convertView.findViewById(R.id.nametxt);
+            vh.nameTxt.setText(filteredCities.get(position).getNome());
         }
         return convertView;
     }
@@ -85,12 +87,12 @@ public class CityAdapter extends ArrayAdapter<City> {
             FilterResults results = new FilterResults();
 
             if (constraint == null || constraint.length() == 0) {
-                results.values = listaCidades;
-                results.count = listaCidades.size();
+                results.values = cityList;
+                results.count = cityList.size();
             } else {
-                List<City> nCidades = new ArrayList<City>();
+                List<City> nCidades = new ArrayList<>();
 
-                for (City f : listaCidades) {
+                for (City f : cityList) {
 
                     if (f.getNome().toUpperCase()
                             .contains(constraint.toString().toUpperCase()))
@@ -110,10 +112,10 @@ public class CityAdapter extends ArrayAdapter<City> {
                                       FilterResults results) {
 
             if (results.count == 0) {
-                filteredCidades = new ArrayList<City>();
+                filteredCities = new ArrayList<>();
                 notifyDataSetChanged();
             } else {
-                filteredCidades = (ArrayList<City>) results.values;
+                filteredCities = (ArrayList<City>) results.values;
                 notifyDataSetChanged();
             }
 

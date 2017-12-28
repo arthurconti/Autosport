@@ -193,4 +193,8 @@ public class PreOrder {
         return total;
     }
 
+    public boolean isEmpty() {
+        return frente == null && superior == null && latDireita == null && latEsquerda == null && traseira == null && listaPecas == null;
+    }
+
 }

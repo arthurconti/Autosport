@@ -1,7 +1,7 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.conti.autosport.R;
-import com.conti.autosport.model.PreOrder;
-import com.conti.autosport.model.Peca;
-import com.conti.autosport.model.Servico;
 import com.conti.autosport.manager.OrcamentoManager;
+import com.conti.autosport.model.Peca;
+import com.conti.autosport.model.PreOrder;
+import com.conti.autosport.model.Servico;
 import com.conti.autosport.util.ConnectionInterface;
 
 import org.apache.commons.net.ftp.FTP;
@@ -340,7 +340,7 @@ public class SavePreOrderActivity extends AppCompatActivity {
 
     public void UpdateUI() {
         if (!mSaved) {
-            TextView txt = (TextView) findViewById(R.id.txtStatus);
+            TextView txt = findViewById(R.id.txtStatus);
             enviarFtp("Orcamento_" + mPreOrderID);
             txt.setText(String.format(getString(R.string.sucesso_orcamento),
                     String.valueOf(mPreOrderID)));
@@ -350,8 +350,10 @@ public class SavePreOrderActivity extends AppCompatActivity {
 
                         @Override
                         public void onClick(View v) {
-                            // TODO Auto-generated method stub
-                            finish();
+                            Intent i = new Intent(SavePreOrderActivity.this, MainMenuActivity.class);
+                            // set the new task and clear flags
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(i);
                         }
                     });
 

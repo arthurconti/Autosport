@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".NewCliente">
+    tools:context=".activity.NovoClienteActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -15,7 +15,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome:"
@@ -32,40 +31,6 @@
 
             <requestFocus />
         </EditText>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Email:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Telefone:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtTel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="phone" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -108,24 +73,9 @@
                 android:layout_height="48dp"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/cidade_selector" />
+                android:src="@drawable/cidade_selector"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Endereço:"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/txtEndereco"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ems="10"
-            android:inputType="textCapWords" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -142,7 +92,8 @@
                 android:layout_marginRight="10dp"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/limpartudo_selector" />
+                android:src="@drawable/limpartudo_selector"
+                tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/btnSalvarCliente"
@@ -151,7 +102,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/avancar_selector" />
+                android:src="@drawable/avancar_selector"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.conti.autosport.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,14 +10,13 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomTouchImageView extends AppCompatImageView {
 
-    public List<Point> points = new ArrayList<Point>();
+    public List<Point> points = new ArrayList<>();
 
     Paint paint = new Paint();
 
@@ -50,6 +50,7 @@ public class CustomTouchImageView extends AppCompatImageView {
         return b;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         super.onTouchEvent(event);
@@ -65,7 +66,7 @@ public class CustomTouchImageView extends AppCompatImageView {
     }
 
     public void eraseImage() {
-        points = new ArrayList<Point>();
+        points = new ArrayList<>();
         points.clear();
     }
 }

@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -36,9 +35,9 @@ public class CityListActivity extends AppCompatActivity implements OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mList = (ListView) findViewById(R.id.listView);
+        mList = findViewById(R.id.listView);
 
-        EditText editSearch = (EditText) findViewById(R.id.editSearch);
+        EditText editSearch = findViewById(R.id.editSearch);
         editSearch.addTextChangedListener(this);
 
         mProgressDialog = new ProgressDialog(this);
@@ -52,8 +51,8 @@ public class CityListActivity extends AppCompatActivity implements OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         Intent data = new Intent();
-        data.putExtra(Customer.ID, mCityAdapter.getFilteredClients().get(arg2).getID());
-        data.putExtra(Customer.NAME, mCityAdapter.getFilteredClients().get(arg2).getNome());
+        data.putExtra(Customer.ID, mCityAdapter.getFilteredCities().get(arg2).getID());
+        data.putExtra(Customer.NAME, mCityAdapter.getFilteredCities().get(arg2).getNome());
         setResult(20, data);
         finish();
     }

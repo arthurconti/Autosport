@@ -55,13 +55,13 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
             convertView = inf.inflate(R.layout.cliente_row, null, false);
 
             vh = new ViewHolder();
-            vh.nameTxt = (TextView) convertView.findViewById(R.id.nametxt);
+            vh.nameTxt = convertView.findViewById(R.id.nametxt);
             vh.nameTxt.setText(filteredClients.get(position).getName());
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
 
-            vh.nameTxt = (TextView) convertView.findViewById(R.id.nametxt);
+            vh.nameTxt = convertView.findViewById(R.id.nametxt);
             vh.nameTxt.setText(filteredClients.get(position).getName());
         }
         return convertView;
@@ -88,7 +88,7 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
                 results.values = listaClientes;
                 results.count = listaClientes.size();
             } else {
-                List<Customer> nClients = new ArrayList<Customer>();
+                List<Customer> nClients = new ArrayList<>();
 
                 for (Customer f : listaClientes) {
 
@@ -110,7 +110,7 @@ public class CustomerAdapter extends ArrayAdapter<Customer> {
                                       FilterResults results) {
 
             if (results.count == 0) {
-                filteredClients = new ArrayList<Customer>();
+                filteredClients = new ArrayList<>();
                 notifyDataSetChanged();
             } else {
                 filteredClients = (ArrayList<Customer>) results.values;

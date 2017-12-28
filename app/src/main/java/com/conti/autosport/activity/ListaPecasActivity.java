@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.conti.autosport.R;
-import com.conti.autosport.model.Peca;
 import com.conti.autosport.manager.OrcamentoManager;
+import com.conti.autosport.model.Peca;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class ListaPecasActivity extends AppCompatActivity {
     }
 
     private void limparPecas() {
-        LinearLayout linear = (LinearLayout) findViewById(R.id.linearPeca);
+        LinearLayout linear = findViewById(R.id.linearPeca);
         linear.removeAllViews();
 
         i = 0;
@@ -65,7 +64,7 @@ public class ListaPecasActivity extends AppCompatActivity {
         String erro = null;
 
         LinearLayout linear = findViewById(R.id.linearPeca);
-        ArrayList<Peca> listaPecas = new ArrayList<Peca>();
+        ArrayList<Peca> listaPecas = new ArrayList<>();
 
         // loop para pegar todos os items na lista
         for (int j = 1; j < i + 1; j++) {
@@ -137,8 +136,7 @@ public class ListaPecasActivity extends AppCompatActivity {
                 isUpdating = true;
                 String str = s.toString();
                 // Verifica se já existe a máscara no texto.
-                boolean hasMask = ((str.indexOf("R$") > -1 || str.indexOf("$") > -1) && (str
-                        .indexOf(".") > -1 || str.indexOf(",") > -1));
+                boolean hasMask = ((str.contains("R$") || str.contains("$")) && (str.contains(".") || str.contains(",")));
                 // Verificamos se existe máscara
                 if (hasMask) {
                     // Retiramos a máscara.

@@ -43,12 +43,12 @@ public class ConnectionInterface {
 
     public ConnectionInterface(Context ctx) {
         this.ctx = ctx;
-        this.ip = PreferenceManager.getDefaultSharedPreferences(ctx).getString("IP", "");
+        ip = PreferenceManager.getDefaultSharedPreferences(ctx).getString("IP", "");
     }
 
     public ConnectionInterface(Context ctx, String txt) {
         this.ctx = ctx;
-        this.ip = txt;
+        ip = txt;
     }
 
     public static JSONArray getJSON(String response) {
@@ -64,8 +64,8 @@ public class ConnectionInterface {
     }
 
     public ArrayList<Customer> getClientes() {
-        ArrayList<Customer> clientes = new ArrayList<Customer>();
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        ArrayList<Customer> clientes = new ArrayList<>();
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "clientes"));
 
         String response = getResponse(nameValuePairs);
@@ -94,8 +94,8 @@ public class ConnectionInterface {
     }
 
     public ArrayList<City> getCidades() {
-        ArrayList<City> cidades = new ArrayList<City>();
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        ArrayList<City> cidades = new ArrayList<>();
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "cidades"));
 
         String response = getResponse(nameValuePairs);
@@ -120,7 +120,7 @@ public class ConnectionInterface {
 
     public Customer addCliente(Customer client) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addcliente"));
         nameValuePairs.add(new BasicNameValuePair("nome", client.getName()));
         nameValuePairs.add(new BasicNameValuePair("email", client.getEmail()));
@@ -157,7 +157,7 @@ public class ConnectionInterface {
     }
 
     public String getNomeCliente(String id) {
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "getNomeCliente"));
         nameValuePairs.add(new BasicNameValuePair("id", id));
 
@@ -173,7 +173,7 @@ public class ConnectionInterface {
     public boolean addEntrada(String orcamento, Uri superior, Uri frente,
                               Uri direita, Uri traseira, Uri esquerda, Uri painel) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addEntrada"));
         nameValuePairs.add(new BasicNameValuePair("orcamento", orcamento));
         if (superior != null)
@@ -197,15 +197,11 @@ public class ConnectionInterface {
 
         String response = getResponse(nameValuePairs);
 
-        if (response.equals("SIM")) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.equals("SIM");
     }
 
     public boolean salvarOrcamento(PreOrder orcament) {
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "concluirOrcamento"));
         nameValuePairs
                 .add(new BasicNameValuePair("placa", orcament.getPlaca()));
@@ -235,11 +231,7 @@ public class ConnectionInterface {
 
         String response = getResponse(nameValuePairs);
 
-        if (response.equals("SIM")) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.equals("SIM");
     }
 
     public String getResponse(List<NameValuePair> nameValuePairs2) {
@@ -293,7 +285,7 @@ public class ConnectionInterface {
     public int addOrcamento(Customer cliente, String placa, String marca,
                             String modelo) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addOrcamento"));
         nameValuePairs.add(new BasicNameValuePair("placa", placa));
         nameValuePairs.add(new BasicNameValuePair("cliente", String
@@ -302,7 +294,7 @@ public class ConnectionInterface {
         nameValuePairs.add(new BasicNameValuePair("modelo", modelo));
 
         String response = getResponse(nameValuePairs);
-        int idorcamento = Integer.parseInt(response.toString());
+        int idorcamento = Integer.parseInt(response);
 
         return idorcamento;
 
@@ -310,7 +302,7 @@ public class ConnectionInterface {
 
     public int addSuperior(int size, int idorcamento) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServico"));
         nameValuePairs.add(new BasicNameValuePair("tipo", "Superior"));
         nameValuePairs.add(new BasicNameValuePair("imagem", "superior.jpg"));
@@ -321,7 +313,7 @@ public class ConnectionInterface {
 
         String response = getResponse(nameValuePairs);
 
-        int resposta = Integer.parseInt(response.toString());
+        int resposta = Integer.parseInt(response);
 
         if (resposta != 0) {
             return resposta;
@@ -332,7 +324,7 @@ public class ConnectionInterface {
 
     public int addLatDireita(int size, int idorcamento) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServico"));
         nameValuePairs.add(new BasicNameValuePair("tipo", "Lateral Direita"));
         nameValuePairs.add(new BasicNameValuePair("imagem", "latdireita.jpg"));
@@ -354,7 +346,7 @@ public class ConnectionInterface {
 
     public int addFrente(int size, int idorcamento) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServico"));
         nameValuePairs.add(new BasicNameValuePair("tipo", "Frente"));
         nameValuePairs.add(new BasicNameValuePair("imagem", "frente.jpg"));
@@ -376,7 +368,7 @@ public class ConnectionInterface {
 
     public int addTraseira(int size, int idorcamento) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServico"));
         nameValuePairs.add(new BasicNameValuePair("tipo", "Traseira"));
         nameValuePairs.add(new BasicNameValuePair("imagem", "traseira.jpg"));
@@ -398,7 +390,7 @@ public class ConnectionInterface {
 
     public int addLatEsquerda(int size, int idorcamento) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServico"));
         nameValuePairs.add(new BasicNameValuePair("tipo", "Lateral Esquerda"));
         nameValuePairs.add(new BasicNameValuePair("imagem", "latesquerda.jpg"));
@@ -422,7 +414,7 @@ public class ConnectionInterface {
                               String foto, double preco) {
         // TODO Auto-generated method stub
         boolean resposta = false;
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addServicoOrcamento"));
         nameValuePairs.add(new BasicNameValuePair("idorcamento", String
                 .valueOf(idorcamento)));
@@ -445,7 +437,7 @@ public class ConnectionInterface {
     public boolean addPeca(int idorcamento, String descricao, double preco) {
         // TODO Auto-generated method stub
         boolean resposta = false;
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addPecaOrcamento"));
         nameValuePairs.add(new BasicNameValuePair("idorcamento", String
                 .valueOf(idorcamento)));
@@ -464,32 +456,24 @@ public class ConnectionInterface {
 
     public boolean getOrcamento(int id) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "getOrcamento"));
         nameValuePairs.add(new BasicNameValuePair("id", String.valueOf(id)));
 
         String response = getResponse(nameValuePairs);
 
-        if (response.equals("SIM")) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.equals("SIM");
     }
 
     public boolean getBuscaEntrada(int id) {
         // TODO Auto-generated method stub
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "buscaEntrada"));
         nameValuePairs.add(new BasicNameValuePair("id", String.valueOf(id)));
 
         String response = getResponse(nameValuePairs);
 
-        if (response.equals("SIM")) {
-            return true;
-        } else {
-            return false;
-        }
+        return response.equals("SIM");
     }
 
     // fazer pegar os tipos

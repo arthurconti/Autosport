@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -74,7 +75,8 @@
             android:layout_marginRight="10dp"
             android:background="@android:color/transparent"
             android:onClick="buttonClick"
-            android:src="@drawable/limpartudo_selector" />
+            android:src="@drawable/limpartudo_selector"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/btnProcessar"
@@ -82,7 +84,8 @@
             android:layout_height="48dp"
             android:background="@android:color/transparent"
             android:onClick="buttonClick"
-            android:src="@drawable/avancar_selector" />
+            android:src="@drawable/avancar_selector"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </LinearLayout>

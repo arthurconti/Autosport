@@ -1,18 +1,13 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,10 +30,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        btnSave = (Button) findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnSave);
         btnSave.setEnabled(false);
 
-        editIP = (EditText) findViewById(R.id.txtIP);
+        editIP = findViewById(R.id.txtIP);
 
         editIP.setText(prefs.getString("IP", ""));
         InputFilter[] filters = new InputFilter[1];
@@ -56,8 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
                         return "";
                     } else {
                         String[] splits = resultingTxt.split("\\.");
-                        for (int i = 0; i < splits.length; i++) {
-                            if (Integer.valueOf(splits[i]) > 255) {
+                        for (String split : splits) {
+                            if (Integer.valueOf(split) > 255) {
                                 return "";
                             }
                         }
@@ -84,7 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnSave:
-                prefs.edit().putString("IP", editIP.getText().toString().trim()).commit();
+                prefs.edit().putString("IP", editIP.getText().toString().trim()).apply();
                 finish();
                 break;
             default:

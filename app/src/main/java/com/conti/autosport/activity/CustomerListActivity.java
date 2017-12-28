@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
 
 public class CustomerListActivity extends AppCompatActivity {
 
-    ArrayList<Customer> mCustomers = new ArrayList<Customer>();
+    ArrayList<Customer> mCustomers = new ArrayList<>();
     CustomerAdapter mAdapter = null;
     ProgressDialog mProgress;
     ListView mList;
@@ -34,7 +33,7 @@ public class CustomerListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mList = (ListView) findViewById(R.id.listView);
+        mList = findViewById(R.id.listView);
 
         mProgress = new ProgressDialog(this);
         mProgress.setMessage(getResources().getString(
@@ -86,7 +85,7 @@ public class CustomerListActivity extends AppCompatActivity {
             }
         });
 
-        EditText txtSearch = (EditText) findViewById(R.id.editSearch);
+        EditText txtSearch = findViewById(R.id.editSearch);
         txtSearch.addTextChangedListener(new TextWatcher() {
 
             @Override

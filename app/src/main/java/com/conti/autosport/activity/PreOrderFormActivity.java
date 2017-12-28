@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.conti.autosport.R;
-import com.conti.autosport.model.Customer;
 import com.conti.autosport.manager.OrcamentoManager;
+import com.conti.autosport.model.Customer;
 
 public class PreOrderFormActivity extends AppCompatActivity implements TextWatcher {
 
@@ -36,10 +35,10 @@ public class PreOrderFormActivity extends AppCompatActivity implements TextWatch
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        editLetPlate = (EditText) findViewById(R.id.editLetPlate);
-        editNumPlate = (EditText) findViewById(R.id.editNumPlate);
-        editBrand = (EditText) findViewById(R.id.editBrand);
-        editModel = (EditText) findViewById(R.id.editModel);
+        editLetPlate = findViewById(R.id.editLetPlate);
+        editNumPlate = findViewById(R.id.editNumPlate);
+        editBrand = findViewById(R.id.editBrand);
+        editModel = findViewById(R.id.editModel);
 
         editLetPlate.addTextChangedListener(this);
     }
@@ -119,7 +118,7 @@ public class PreOrderFormActivity extends AppCompatActivity implements TextWatch
                 mCustomer.setId(data.getExtras().getInt(Customer.ID));
                 mCustomer.setName(data.getExtras().getString(Customer.NAME));
 
-                TextView txt = (TextView) findViewById(R.id.txtCustomerName);
+                TextView txt = findViewById(R.id.txtCustomerName);
                 txt.setText(mCustomer.getName());
                 txt.setTextColor(Color.DKGRAY);
 

@@ -1,6 +1,5 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -60,15 +59,15 @@ public class PreOrderEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_entrada_orcamento);
         orcamento = getIntent().getStringExtra(PreOrder.ID);
 
-        TextView txtEntrada = (TextView) findViewById(R.id.txtentrada);
+        TextView txtEntrada = findViewById(R.id.txtentrada);
         txtEntrada.setText(getString(R.string.tire_fotos) + orcamento);
 
-        btnSuperior = (Button) findViewById(R.id.btnFotoSuperior);
-        btnDireita = (Button) findViewById(R.id.btnFotoDireita);
-        btnEsquerda = (Button) findViewById(R.id.btnFotoEsquerda);
-        btnFrente = (Button) findViewById(R.id.btnFotoFrente);
-        btnPainel = (Button) findViewById(R.id.btnFotoPainel);
-        btnTraseira = (Button) findViewById(R.id.btnFotoTraseira);
+        btnSuperior = findViewById(R.id.btnFotoSuperior);
+        btnDireita = findViewById(R.id.btnFotoDireita);
+        btnEsquerda = findViewById(R.id.btnFotoEsquerda);
+        btnFrente = findViewById(R.id.btnFotoFrente);
+        btnPainel = findViewById(R.id.btnFotoPainel);
+        btnTraseira = findViewById(R.id.btnFotoTraseira);
     }
 
     public void buttonClick(View v) {
@@ -104,12 +103,8 @@ public class PreOrderEntryActivity extends AppCompatActivity {
     public boolean gravarEntrada() {
         enviarFtp("Entrada_" + orcamento);
         ConnectionInterface conn = new ConnectionInterface(this);
-        if (conn.addEntrada(orcamento, mSuperiorUri, mFrontUri, mRightUri, mBehindUri,
-                mLeftUri, mPanelUri)) {
-            return true;
-        } else {
-            return false;
-        }
+        return conn.addEntrada(orcamento, mSuperiorUri, mFrontUri, mRightUri, mBehindUri,
+                mLeftUri, mPanelUri);
 
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -40,7 +41,8 @@
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:onClick="buttonClick"
-        android:src="@drawable/limpar_selector" />
+        android:src="@drawable/limpar_selector"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/lblListaServicos"
@@ -64,7 +66,7 @@
             android:id="@+id/linearServ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical" />
     </ScrollView>
 
     <LinearLayout
@@ -80,7 +82,8 @@
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
             android:onClick="buttonClick"
-            android:src="@drawable/avancar_selector" />
+            android:src="@drawable/avancar_selector"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 </LinearLayout>

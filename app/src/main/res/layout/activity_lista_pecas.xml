@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,7 +23,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/addservico_selector" />
+                android:src="@drawable/addservico_selector"
+                tools:ignore="ContentDescription" />
 
             <ImageButton
                 android:id="@+id/btnLimpar"
@@ -35,12 +36,12 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:color/transparent"
                 android:onClick="buttonClick"
-                android:src="@drawable/limpartudo_selector" />
+                android:src="@drawable/limpartudo_selector"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
 
         <ScrollView
-            android:id="@+id/scrollPecas"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="2dp"
@@ -50,7 +51,7 @@
                 android:id="@+id/linearPeca"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical" />
         </ScrollView>
 
         <LinearLayout
@@ -64,7 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/avancar_selector"
-                android:onClick="buttonClick" />
+                android:onClick="buttonClick"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
     </LinearLayout>
 

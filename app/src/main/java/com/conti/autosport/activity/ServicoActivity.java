@@ -1,10 +1,9 @@
 package com.conti.autosport.activity;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,9 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.conti.autosport.R;
+import com.conti.autosport.manager.OrcamentoManager;
 import com.conti.autosport.model.Local;
 import com.conti.autosport.model.Servico;
-import com.conti.autosport.manager.OrcamentoManager;
 import com.conti.autosport.util.CustomTouchImageView;
 import com.conti.autosport.util.Parte;
 
@@ -37,7 +36,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
     Bitmap bmp;
     CustomTouchImageView img;
     int i = 0;
-    ArrayList<Uri> imagens = new ArrayList<Uri>();
+    ArrayList<Uri> imagens = new ArrayList<>();
 
     Uri fileUri = null;
     ImageView photoImage = null;
@@ -46,6 +45,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
 
     private Parte mStep;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,15 +128,15 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
         String erro = null;
         local = new Local();
 
-        LinearLayout linear = (LinearLayout) findViewById(R.id.linearServ);
-        ArrayList<Servico> servicos = new ArrayList<Servico>();
+        LinearLayout linear = findViewById(R.id.linearServ);
+        ArrayList<Servico> servicos = new ArrayList<>();
 
         // loop para pegar todos os items na lista
         for (int j = 1; j < i + 1; j++) {
             Servico serv = new Servico();
 
-            EditText tipo = (EditText) linear.findViewWithTag("tipo" + j);
-            EditText valor = (EditText) linear.findViewWithTag("preco" + j);
+            EditText tipo = linear.findViewWithTag("tipo" + j);
+            EditText valor = linear.findViewWithTag("preco" + j);
 
             if (tipo.getText().toString().equals(""))
                 erro = getResources().getString(R.string.erro_vazio);
@@ -186,18 +186,18 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
 
         i++;
 
-        LinearLayout linear = (LinearLayout) findViewById(R.id.linearServ);
+        LinearLayout linear = findViewById(R.id.linearServ);
 
         View v = getLayoutInflater().inflate(R.layout.servico_line, null);
 
-        TextView txtservico = (TextView) v.findViewById(R.id.txtID_servico);
+        TextView txtservico = v.findViewById(R.id.txtID_servico);
         txtservico.setText(i + "");
         txtservico.setTextColor(getResources().getColor(android.R.color.black));
 
-        EditText txtTipo = (EditText) v.findViewById(R.id.edit_servico);
+        EditText txtTipo = v.findViewById(R.id.edit_servico);
         txtTipo.setTag("tipo" + i);
 
-        final EditText txtPreco = (EditText) v.findViewById(R.id.edit_valor);
+        final EditText txtPreco = v.findViewById(R.id.edit_valor);
         txtPreco.setTag("preco" + i);
         txtPreco.setSelectAllOnFocus(true);
         txtPreco.addTextChangedListener(new TextWatcher() {
@@ -219,8 +219,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
                 isUpdating = true;
                 String str = s.toString();
                 // Verifica se já existe a máscara no texto.
-                boolean hasMask = ((str.indexOf("R$") > -1 || str.indexOf("$") > -1) && (str
-                        .indexOf(".") > -1 || str.indexOf(",") > -1));
+                boolean hasMask = ((str.contains("R$") || str.contains("$")) && (str.contains(".") || str.contains(",")));
                 // Verificamos se existe máscara
                 if (hasMask) {
                     // Retiramos a máscara.
@@ -251,7 +250,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
             }
         });
 
-        Button btnFoto = (Button) v.findViewById(R.id.btn_foto);
+        Button btnFoto = v.findViewById(R.id.btn_foto);
         btnFoto.setTag("foto" + i);
         btnFoto.setOnClickListener(new View.OnClickListener() {
 
@@ -284,7 +283,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
         findViewById(R.id.lblListaServicos).setVisibility(View.INVISIBLE);
         findViewById(R.id.scrollServicos).setVisibility(View.INVISIBLE);
 
-        LinearLayout linear = (LinearLayout) findViewById(R.id.linearServ);
+        LinearLayout linear = findViewById(R.id.linearServ);
         linear.removeAllViews();
 
         i = 0;
@@ -319,6 +318,7 @@ public class ServicoActivity extends AppCompatActivity implements OnTouchListene
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {

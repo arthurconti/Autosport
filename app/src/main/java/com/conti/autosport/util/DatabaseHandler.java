@@ -65,7 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * returns list of labels
      */
     public List<String> getAllLabels() {
-        List<String> labels = new ArrayList<String>();
+        List<String> labels = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_LABELS;
