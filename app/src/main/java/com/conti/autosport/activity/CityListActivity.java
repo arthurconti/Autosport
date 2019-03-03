@@ -21,6 +21,7 @@ import com.conti.autosport.model.Customer;
 import com.conti.autosport.util.ConnectionInterface;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CityListActivity extends AppCompatActivity implements OnItemClickListener,
         TextWatcher {
@@ -103,6 +104,7 @@ public class CityListActivity extends AppCompatActivity implements OnItemClickLi
                             .show();
                     break;
                 case 3:
+                    reorderCities(new ArrayList<>(mCities));
                     mCityAdapter = new CityAdapter(getApplicationContext(), mCities);
                     mList.setAdapter(mCityAdapter);
                     mList.setOnItemClickListener(CityListActivity.this);
@@ -130,6 +132,20 @@ public class CityListActivity extends AppCompatActivity implements OnItemClickLi
             }
 
             return null;
+        }
+
+        private void reorderCities(List<City> cities) {
+            if (cities != null) {
+                for (City city : cities
+                        ) {
+                    if (city.getNome().trim().equalsIgnoreCase("itapetininga")) {
+                        int index = cities.indexOf(city);
+                        mCities.remove(index);
+                        mCities.add(0, city);
+                        break;
+                    }
+                }
+            }
         }
     }
 }

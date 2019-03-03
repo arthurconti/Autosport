@@ -27,19 +27,8 @@ public class CityAdapter extends ArrayAdapter<City> {
     public CityAdapter(Context context, ArrayList<City> cidades) {
         super(context, R.layout.cliente_row, cidades);
         cityList = cidades;
-        setCustomList(cidades);
         filteredCities = cidades;
         this.context = context;
-    }
-
-    private void setCustomList(ArrayList<City> cities) {
-        for (City city : cities
-                ) {
-            if (city.getNome().trim().equalsIgnoreCase("itapetininga")) {
-                cityList.remove(cities.indexOf(city));
-                cityList.add(0, city);
-            }
-        }
     }
 
     @Override
