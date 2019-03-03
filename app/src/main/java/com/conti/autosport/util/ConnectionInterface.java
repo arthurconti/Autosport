@@ -263,7 +263,7 @@ public class ConnectionInterface {
                     StrictMode.setThreadPolicy(policy);
 
                     List<NameValuePair> valores = nameValuePairs2;
-                    httppost.setEntity(new UrlEncodedFormEntity(valores));
+                    httppost.setEntity(new UrlEncodedFormEntity(valores, "UTF-8"));
 
                     // Execute HTTP Post Request
                     HttpResponse response = httpclient.execute(httppost);
