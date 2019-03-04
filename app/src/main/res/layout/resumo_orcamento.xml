@@ -190,17 +190,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/txtTotal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Total: R$1000,00"
+                android:text="Total: R$"
                 android:textColor="#ff0000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDesconto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000,00"
+                android:textColor="#ff0000"
+                android:textSize="20sp"
+                android:layout_marginRight="5dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1000,00"
+                    android:textColor="#ff0000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:id="@+id/strike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_alignEnd="@id/txtTotal"
+                    android:layout_alignLeft="@id/txtTotal"
+                    android:layout_alignRight="@id/txtTotal"
+                    android:layout_alignStart="@id/txtTotal"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/darker_gray"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -209,6 +250,14 @@
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDesconto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:onClick="buttonClick"
+                android:text="Aplicar desconto" />
 
             <ImageButton
                 android:id="@+id/btnAvancar"

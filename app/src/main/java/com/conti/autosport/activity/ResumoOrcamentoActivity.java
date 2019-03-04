@@ -1,10 +1,16 @@
 package com.conti.autosport.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -16,6 +22,7 @@ import com.conti.autosport.model.Peca;
 import com.conti.autosport.model.PreOrder;
 import com.conti.autosport.model.Servico;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class ResumoOrcamentoActivity extends AppCompatActivity {
@@ -23,11 +30,18 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
     private PreOrder orcamento;
     private double subtotal = 0;
     private double total = 0;
+    private double desconto = 0;
+
+    private TextView mTxtDesconto;
+    private View mStrike;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resumo_orcamento);
+
+        mTxtDesconto = findViewById(R.id.txtDesconto);
+        mStrike = findViewById(R.id.strike);
 
         orcamento = OrcamentoManager.getInstance().getOrcamento();
 
@@ -214,16 +228,20 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
             }
 
             TextView txtTotal = findViewById(R.id.txtTotal);
-            txtTotal.setText("Total: R$" + String.format("%.2f", total));
+            txtTotal.setText(String.format("%.2f", total));
         }
     }
 
     public void buttonClick(View v) {
-        finish();
         switch (v.getId()) {
             case R.id.btnAvancar:
+                OrcamentoManager.getInstance().getOrcamento().setDesconto(desconto);
+                finish();
                 Intent i = new Intent(getApplicationContext(), PreOrderFormActivity.class);
                 startActivity(i);
+                break;
+            case R.id.btnDesconto:
+                showDiscountDialog();
                 break;
 
             default:
@@ -241,5 +259,102 @@ public class ResumoOrcamentoActivity extends AppCompatActivity {
         txtvalor.setText(valor);
 
         container.addView(line);
+    }
+
+    private void showDiscountDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ResumoOrcamentoActivity.this);
+        builder.setTitle("Dar desconto?");
+
+// Set up the input
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        input.setSelectAllOnFocus(true);
+        input.addTextChangedListener(new TextWatcher() {
+
+            private boolean isUpdating = false;
+            // Pega a formatacao do sistema, se for brasil R$ se EUA US$
+            private NumberFormat nf = NumberFormat.getCurrencyInstance();
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int after) {
+                // Evita que o método seja executado varias vezes.
+                // Se tirar ele entre em loop
+                if (isUpdating) {
+                    isUpdating = false;
+                    return;
+                }
+
+                isUpdating = true;
+                String str = s.toString();
+                // Verifica se já existe a máscara no texto.
+                boolean hasMask = ((str.contains("R$") || str.contains("$")) && (str.contains(".") || str.contains(",")));
+                // Verificamos se existe máscara
+                if (hasMask) {
+                    // Retiramos a máscara.
+                    str = str.replaceAll("[R$]", "").replaceAll("[,]", "")
+                            .replaceAll("[.]", "");
+                }
+
+                try {
+                    // Transformamos o número que está escrito no EditText em
+                    // monetário.
+                    str = nf.format(Double.parseDouble(str) / 100);
+                    input.setText(str);
+                    input.setSelection(input.getText().length());
+                } catch (NumberFormatException e) {
+                    s = "";
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // Não utilizamos
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Não utilizamos
+            }
+        });
+
+        input.setText(String.format("R$%.2f", desconto));
+
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("Aplicar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String preco = input.getText().toString()
+                        .replaceAll("[R$.]", "").replaceAll(",", ".");
+                desconto = Double.parseDouble(preco);
+                if (total > desconto) {
+                    showDiscountViews();
+                } else {
+                    Toast.makeText(ResumoOrcamentoActivity.this, "Desconto maior que o valor total!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
+    private void showDiscountViews() {
+        if (desconto > 0) {
+            mTxtDesconto.setText(String.format("%.2f", total - desconto));
+            mTxtDesconto.setVisibility(View.VISIBLE);
+            mStrike.setVisibility(View.VISIBLE);
+        } else {
+            mTxtDesconto.setVisibility(View.GONE);
+            mStrike.setVisibility(View.GONE);
+        }
     }
 }

@@ -73,7 +73,7 @@ public class SavePreOrderActivity extends AppCompatActivity {
 
         mPreOrderID = conn.addOrcamento(preOrder.getCliente(),
                 preOrder.getPlaca(), preOrder.getMarca(),
-                preOrder.getModelo());
+                preOrder.getModelo(), preOrder.getDesconto());
 
         if (mPreOrderID != 0) {
 

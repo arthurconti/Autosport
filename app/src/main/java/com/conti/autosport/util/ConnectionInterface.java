@@ -283,7 +283,7 @@ public class ConnectionInterface {
     }
 
     public int addOrcamento(Customer cliente, String placa, String marca,
-                            String modelo) {
+                            String modelo, double desconto) {
         // TODO Auto-generated method stub
         List<NameValuePair> nameValuePairs = new ArrayList<>(2);
         nameValuePairs.add(new BasicNameValuePair("op", "addOrcamento"));
@@ -292,6 +292,8 @@ public class ConnectionInterface {
                 .valueOf(cliente.getId())));
         nameValuePairs.add(new BasicNameValuePair("marca", marca));
         nameValuePairs.add(new BasicNameValuePair("modelo", modelo));
+        nameValuePairs.add(new BasicNameValuePair("desconto", String
+                .valueOf(desconto)));
 
         String response = getResponse(nameValuePairs);
         int idorcamento = Integer.parseInt(response);

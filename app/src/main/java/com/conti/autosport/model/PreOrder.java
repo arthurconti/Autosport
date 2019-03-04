@@ -17,6 +17,7 @@ public class PreOrder {
     private Local traseira;
     private Local latEsquerda;
     private Local latDireita;
+    private Double desconto;
     private ArrayList<Peca> listaPecas;
 
     public PreOrder(Customer cliente2, String placa2, String marca2,
@@ -191,6 +192,14 @@ public class PreOrder {
             }
         }
         return total;
+    }
+
+    public Double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(Double desconto) {
+        this.desconto = desconto;
     }
 
     public boolean isEmpty() {
