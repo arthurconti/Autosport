@@ -120,7 +120,7 @@ public class PreOrderFormActivity extends AppCompatActivity implements TextWatch
 
                 TextView txt = findViewById(R.id.txtCustomerName);
                 txt.setText(mCustomer.getName());
-                txt.setTextColor(Color.DKGRAY);
+                txt.setTextColor(Color.LTGRAY);
 
                 editLetPlate.setEnabled(true);
                 editNumPlate.setEnabled(true);
